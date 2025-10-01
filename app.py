@@ -6,6 +6,10 @@ from wordcloud import WordCloud
 
 # Load data
 df = pd.read_csv("metadata.csv", nrows=10000)
+# Save as a smaller CSV
+df.to_csv("sample_metadata.csv", index=False)
+
+
 df['publish_time'] = pd.to_datetime(df['publish_time'], errors='coerce')
 df['year'] = df['publish_time'].dt.year
 df['journal'] = df['journal'].fillna("Unknown")
